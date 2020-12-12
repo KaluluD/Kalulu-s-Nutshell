@@ -1,0 +1,88 @@
+---
+title: "network"
+author: "Lujia Deng"
+date: "12/10/2020"
+output: html_document
+---
+
+```{r}
+library(igraph)
+# library(extrafont)
+# font_import(pattern="[T/t]imes")
+# loadfonts(device="win")
+```
+
+```{r}
+# Read in the data:
+sn_node <- read.csv("./data_folder/sn_top_20.csv", header=T)
+dwg_node <- read.csv("./data_folder/dwg_top_20.csv", header=T)
+
+# sn_node <- read.csv("sn_node.csv", header=T)
+sn_edge <- read.csv("./data_folder/sn_edge.csv", header=T)
+sn_edge$weight <- as.numeric(sn_edge$weight)
+
+dwg_edge <- read.csv("./data_folder/dwg_edge.csv", header=T)
+dwg_edge$weight <- as.numeric(dwg_edge$weight)
+
+sn_edge <- sn_edge[sn_edge$from %in% sn_node$champion_name, ]
+sn_edge <- sn_edge[sn_edge$to %in% sn_node$champion_name, ]
+
+dwg_edge <- dwg_edge[dwg_edge$from %in% dwg_node$champion_name, ]
+dwg_edge <- dwg_edge[dwg_edge$to %in% dwg_node$champion_name, ]
+
+# dim(dwg_node)
+# dim(dwg_edge)
+```
+
+
+```{r}
+## Suning team build
+sn_net <- graph_from_data_frame(d = sn_edge, vertices = sn_node, directed = F)
+E(sn_net)$weight <- as.numeric(E(sn_net)$weight)
+
+## DWG team build
+dwg_net <- graph_from_data_frame(d = dwg_edge, vertices = dwg_node, directed = F)
+E(dwg_net)$weight <- as.numeric(E(dwg_net)$weight)
+
+# Set edge width based on weight:
+E(sn_net)$width <- E(sn_net)$weight^2/10
+#l <- layout_in_circle(sn_net)
+#l <- layout_on_sphere(sn_net)
+# l <- norm_coords(l, ymin=-1, ymax=1, xmin=-1, xmax=1)
+#l <-layout_with_graphopt
+
+
+E(dwg_net)$width <- E(dwg_net)$weight^2/10
+#l <- layout_in_circle(sn_net)
+#l <- layout_on_sphere(sn_net)
+# l <- norm_coords(l, ymin=-1, ymax=1, xmin=-1, xmax=1)
+#l <-layout_with_graphopt
+
+sn_net <- simplify(sn_net, remove.multiple = F, remove.loops = T)
+dwg_net <- simplify(dwg_net, remove.multiple = F, remove.loops = T)
+
+```
+
+```{r  fig.width=6, fig.height=6}
+set.seed(7)
+
+# define graph layout
+l <- layout_with_fr(sn_net)
+
+# define colors
+col1 <- adjustcolor("deepskyblue", alpha.f=0.5) # bot, sup
+col2 <- adjustcolor("red2", alpha.f=0.5) # top, mid/jungle
+col3 <- adjustcolor("gold1", alpha.f=0.5) # team
+col4 <- adjustcolor("yellowgreen", alpha.f = 0.5) # mid/jungle, bot
+col5 <- adjustcolor("cornsilk1", alpha.f=0.7) #others
+
+
+
+plot(sn_net,vertex.label=sn_node$id, vertex.shape = 'none', vertex.label.color="black", vertex.label.font=1, vertex.label.cex=1, layout=l*0.6, vertex.size=10, edge.color=adjustcolor(1, alpha.f = 0.075), mark.groups=list(c(2,8), c(1,9), c(2,12),c(2,5), c(9,16), c(10,11), c(1,3,6), c(4,8), c(7,13)), mark.col=c(col5, col5, col5, col1, col1, col1, col2, col4,col4), mark.expand=5, mark.border=NA, margin=-0.07, main="Suning Top 20 Picked Champions")
+sn_node
+```
+```{r fig.width=6, fig.height=6}
+set.seed(20)
+plot(dwg_net,vertex.label=dwg_node$id, vertex.shape = 'none', vertex.label.color="black", vertex.label.font=1, vertex.label.cex=1, layout=l*0.6, vertex.size=10, edge.color=adjustcolor(1, alpha.f = 0.075), mark.groups=list(c(1,2,4,17), c(16, 19), c(5,11), c(2,9)), mark.col=c(col3, col2, col1, col4), mark.expand = 5,mark.border=NA, margin=-0.07, main="DWG Top 20 Picked Champions")
+dwg_node
+```

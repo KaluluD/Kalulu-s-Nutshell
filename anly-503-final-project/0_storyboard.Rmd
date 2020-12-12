@@ -1,0 +1,198 @@
+---
+title: "Looking into League of Legends Season 2020"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    orientation: columns
+    vertical_layout: fill
+---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+
+library(reticulate)
+use_python("C:/Users/ldeng/Python/Python39", required = TRUE)
+
+library(ggplot2)
+theme_set(theme_bw())
+library(ggmap)
+library(tidyverse)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+
+library(extrafont)
+# font_import(pattern="[T/t]imes")
+# loadfonts(device="win")
+
+library(wordcloud)
+library(wordcloud2)
+```
+
+### Welcome to the Summoner's Rift: League of Legends Basics Explained
+
+```{r fig.cap="A caption", out.width = '100%'}
+knitr::include_graphics("cover1.png")
+```
+
+*** 
+
+League of Legends is one of the most popular team-based action-strategy game developed and published by Riot Games. 
+
+The idea is simple - two five-player teams play against each other and the one that first take down the other's base claims victory. Tons of decisions need to be made on battling, resource seizing, etc., and there are over a hundred characters (called 'champions') with distinct abilities can be chosen from, which make the game even more complex.
+
+The map of a League of Legends game consists of Top, Middle, Bottom Lane, and Jungle. Five players from each team would choose which position they play at, usually 1 for Top, 1 for Mid, 1 for Jungle and 2 players go to the bottom.
+
+
+### An Esport Sweeping the World: 12 Leagues around the World
+
+```{r fig.cap="A caption", out.width = '100%'}
+
+# pull country data from rnaturalearth
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+
+# league region list for LEC, PCS, LLA
+
+LEC_dat <- read.csv("./data_folder/LEC.csv")
+LEC_list <- as.character(LEC_dat$State)
+LEC_list[14] <- 'Ireland'
+
+PCS_list = c('HKG', 'TWN', 'MAC', 'SGP')
+LLA_list = c('ARG', 'MEX', 'CHL', 'CRI')
+
+
+# add a 'league' column
+## first creates dummy variables
+world_new <- world %>% 
+  mutate(LPL = if_else(admin=='China', 1, 0)) %>% 
+  mutate(LCS = if_else((admin=='Canada')|(admin=='United States of America'), 1, 0)) %>%
+  mutate(LEC = if_else(admin %in% LEC_list, 1, 0)) %>%
+  mutate(LCK = if_else(admin == 'South Korea', 1, 0)) %>%
+  mutate(PCS = if_else(adm0_a3 %in% PCS_list, 1, 0)) %>%
+  mutate(CBLOL = if_else(admin == 'Brazil', 1, 0)) %>%
+  mutate(LCL = if_else(admin == 'Russia', 1, 0)) %>%
+  mutate(LJL = if_else(admin == 'Japan', 1, 0)) %>%
+  mutate(OPL = if_else(admin == 'Australia', 1, 0)) %>%
+  mutate(LLA = if_else(adm0_a3 %in% LLA_list, 1, 0)) %>%
+  mutate(VCS = if_else(admin == 'Vietnam', 1, 0)) %>%
+  mutate(TCL = if_else(admin == 'Turkey', 1, 0))
+
+## combine dummy variables into one column
+
+world_new$league <- names(world_new[65:76])[apply(world_new[65:76], 1, match, x=1)]
+world_new[is.na(world_new)] <- 'N/A'
+
+# world_new[world_new$OPL == 1,]
+
+# Draw league map
+
+map_color_pal <- c('deepskyblue1', 'red2', "royalblue", 'lightskyblue2', 'blue1', 'forestgreen','cornsilk1', 'orangered1', 'darkgoldenrod2','dodgerblue1','gold1', 'darkolivegreen2')
+
+world_new$league <- factor(world_new$league, 
+                           levels = c('LCK', 'LPL','LEC','LCS','PCS','CBLOL','LCL','LJL','LLA','OPL','TCL','VCS'))
+
+league_map <- ggplot(data = world_new) + geom_sf(aes(fill=league), alpha=0.7) + xlab("Longitude") + ylab("Latitude") + labs(fill = "Tier-1 Leagues")
+league_map <- league_map + scale_fill_manual(values=map_color_pal)
+league_map <- league_map + ggtitle("League of Legends Tier-1 League Map", subtitle = "There are 12 tier-1 professional leagues around the world") + theme(plot.title=element_text(family="Times New Roman", face="bold", size=12), text=element_text(size=10, family="Times New Roman"))
+
+#league_map
+
+ggsave("league_map.png")
+
+knitr::include_graphics("league_map.png")
+```
+
+*** 
+
+Twelve tier-1 professional leagues of League of Legends Esports and the regions/countries they represent are as the following:
+
+* League of Legends Champions Korea (LCK): South Korea
+* League of Legends Pro League(LPL): Mainland China
+* League of Legends European Championship (LEC): Europe
+* League of Legends Championship Series (LCS): United States, Canada
+* Pacific Championship Series (PCS): Taiwan, Hong Kong, Macao, Southeast Asia
+* Campeonato Brasileiro de League of Legends (CBLOL): Brazil
+* League of Legends Continental League (LCL): Russia
+* League of Legends Japan League (LJL): Japan
+* Liga Latinoamérica (LLA): Latin America
+* Oceanic Pro League (OPL): Australia
+* Vietnam Championship Series (VCS): Vietnam
+
+
+### Which is the strongest league out of the twelve?
+
+```{r fig.width=6, fig.height=6}
+knitr::include_graphics("win_rate.png")
+```
+
+***
+
+The graph compares the win rates of the 12 leagues in the 2020 League of Legends World Championship.
+
+LCK (South Korea) is ranked top one, followed by LPL (Mainland China). Both have a over 60% win rate. 
+
+
+### League Game Style: Conflict-Averse LCK vs. Risk-Seeking LPL
+
+```{r}
+knitr::include_graphics("league_game_style_comp.png")
+```
+
+***
+
+Let's compare the kills, deaths, assists, and ckpm (combined kills per minute) for all domestic games of LCK (South Korea) and LPL (Mainland China):
+
+* While the distributions are mainly overlapped, we can observe that those of LCK are more right-skewed, indicating a slightly more conflict-averse game style
+
+* It becomes clearer when looking ckpm (sum of kills and deaths per min), a metric used to measure team aggressiveness - LPL has a higher ckpm, 0.82 on average, compared with 0.71 for LCK.
+
+
+### Top 2 Team Game Style over Time
+
+```{r}
+knitr::include_graphics("game_style_over_time.png")
+```
+
+***
+
+I picked the Top 2 teams from the 2020 World Championship, Damwon Gaming (LCK) and Suning (LPL), and compare their game style over time.
+
+For the two graphs, blue represents DWG and red represents Suning. We can see that:
+
+* DWG generally focuses more on creep score (giviing minions the last hit to earn gold) than confronting the enemies.
+* Over the time, Suning plays more aggressively while DWG becomes more cautious.
+
+
+### Compare Champion Picks: More Variations from Suning Gaming
+
+```{r}
+knitr::include_graphics("Team_build_comp.png")
+```
+
+***
+
+Now let's talk about champion picks!
+
+The two networks demonstrate Suning and DWG's top 20 picked champions in 2020 and how those champions are connected with each other (be in the same game). The thicker an edge, the more frequently the pair of champions be in the same game. I highlighted the most salient connections (red: mid to top, green: mid to bottom, blue: bottom and support, beige: others). We can have the following observations:
+
+* Most frequently picked combinations for DWG: Sett-Zoe-Ezreal-Bard
+* It seems that Suning has more variations in building the teams
+
+
+
+### Bye Bye Season 2020, See You in 2021!
+
+```{r fig.width = 7, fig.height=7}
+
+knitr::include_graphics("wc1.png")
+
+```
+
+
+***
+
+Now the League of Legends Season 10 has ended and the new season is right around the corner, I collected the last 7-day tweets with hashtags #leagueoflegends and #preseason and created this word cloud. 
+
+Looking forward to the new season and more games:)

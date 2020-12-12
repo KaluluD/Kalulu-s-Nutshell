@@ -1,0 +1,75 @@
+---
+title: "word_cloud"
+author: "Lujia Deng"
+date: "12/11/2020"
+output: html_document
+---
+---
+title: "word_cloud"
+author: "Lujia Deng"
+date: "12/11/2020"
+output: html_document
+---
+
+```{r}
+library(wordcloud)
+library(wordcloud2)
+library(RColorBrewer)
+library(tm)
+library(tidyverse)
+library(tidytext)
+library(SnowballC)
+```
+
+
+```{r}
+## Text preprocessing 
+
+tt <- read.csv("./data_folder/tweets.csv", encoding = "UTF-8")
+
+tt$text <- gsub("https\\S*", "", tt$text) 
+tt$text <- gsub("@\\S*", "", tt$text) 
+tt$text <- gsub("amp", "", tt$text) 
+tt$text <- gsub("[\r\n]", "", tt$text)
+tt$text <- gsub("[[:punct:]]", "", tt$text)
+
+tt_words <-  tt %>% select(text) %>% unnest_tokens(word, text)
+tt_words <- tt_words %>% count(word, sort=TRUE)
+
+# remove stop words
+stopwords <- stopwords("english")
+
+tt_words <- tt_words[!tt_words$word %in% stopwords,]
+tt_words <- tt_words[-c(4,5,60,61),]
+#write.csv(tt_words, "./data_folder/word_freq.csv")
+```
+
+
+
+```{r}
+ttwords <- read.csv("./data_folder/word_freq.csv")
+
+my_pal <- c('red','darkgoldenrod1', 'cornflowerblue','black','darkolivegreen',"azure4", "dodgerblue", "tomato","grey", "black", "darkblue")
+
+l <- rep_len(my_pal, nrow(tt_words))
+
+wc1 <- wordcloud2(tt_words, size = 0.4, color=l, gridSize = 0.2, shuffle = FALSE)
+wc1
+
+# Alternative version: Use logo as the mask
+# wc2 <- wordcloud2(tt_words, size=0.3, gridSize = 0.3,figPath = 'lol3.png', color=l, shuffle = FALSE)
+# wc2
+```
+
+
+```{r}
+## Save the word cloud graph
+
+library(htmlwidgets)
+library(webshot)
+
+# Wordcloud2 is a html widget. To save it - first saves the html, then export it as a png with webshot library
+saveWidget(wc1,"word_cloud.html",selfcontained = F)
+webshot("word_cloud.html", "wc1.png", delay = 5, vwidth = 672, vheight = 480)
+```
+

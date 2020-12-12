@@ -1,0 +1,621 @@
+from,to,weight
+Lee Sin,Mordekaiser,3
+Mordekaiser,Zoe,2
+Mordekaiser,Senna,1
+Mordekaiser,Tahm Kench,1
+Lee Sin,Zoe,5
+Lee Sin,Senna,1
+Lee Sin,Tahm Kench,3
+Senna,Zoe,1
+Tahm Kench,Zoe,2
+Senna,Tahm Kench,4
+Mordekaiser,Rumble,1
+Miss Fortune,Mordekaiser,2
+Leona,Mordekaiser,2
+Lee Sin,Rumble,1
+Lee Sin,Miss Fortune,3
+Lee Sin,Leona,3
+Miss Fortune,Rumble,1
+Leona,Rumble,1
+Leona,Miss Fortune,4
+Gragas,Renekton,2
+Ornn,Renekton,1
+Ezreal,Renekton,3
+Renekton,Yuumi,1
+Gragas,Ornn,1
+Ezreal,Gragas,1
+Gragas,Yuumi,1
+Ezreal,Ornn,3
+Ornn,Yuumi,1
+Ezreal,Yuumi,1
+Jarvan IV,Renekton,4
+Azir,Renekton,2
+Miss Fortune,Renekton,5
+Nautilus,Renekton,6
+Azir,Jarvan IV,2
+Jarvan IV,Miss Fortune,7
+Jarvan IV,Nautilus,1
+Azir,Miss Fortune,2
+Azir,Nautilus,2
+Miss Fortune,Nautilus,4
+Aatrox,Elise,1
+Aatrox,Azir,1
+Aatrox,Miss Fortune,6
+Aatrox,Nautilus,4
+Azir,Elise,1
+Elise,Miss Fortune,1
+Elise,Nautilus,1
+Janna,Olaf,1
+Janna,Lissandra,1
+Janna,Miss Fortune,3
+Braum,Janna,1
+Lissandra,Olaf,1
+Miss Fortune,Olaf,1
+Braum,Olaf,1
+Lissandra,Miss Fortune,2
+Braum,Lissandra,1
+Braum,Miss Fortune,5
+Jarvan IV,Ornn,3
+Azir,Ornn,1
+Jhin,Ornn,2
+Ornn,Tahm Kench,2
+Jarvan IV,Jhin,2
+Jarvan IV,Tahm Kench,2
+Azir,Jhin,2
+Azir,Tahm Kench,2
+Jhin,Tahm Kench,4
+Janna,Jarvan IV,2
+Janna,Kassadin,2
+Janna,Leona,2
+Jarvan IV,Kassadin,3
+Jarvan IV,Leona,7
+Kassadin,Miss Fortune,3
+Kassadin,Leona,2
+Ornn,Taliyah,1
+Ornn,Pantheon,1
+Miss Fortune,Ornn,3
+Blitzcrank,Ornn,1
+Pantheon,Taliyah,1
+Miss Fortune,Taliyah,1
+Blitzcrank,Taliyah,1
+Miss Fortune,Pantheon,1
+Blitzcrank,Pantheon,1
+Blitzcrank,Miss Fortune,2
+Gragas,Sett,1
+Galio,Sett,1
+Draven,Sett,1
+Leona,Sett,2
+Galio,Gragas,2
+Draven,Gragas,1
+Gragas,Leona,1
+Draven,Galio,2
+Galio,Leona,3
+Draven,Leona,2
+Galio,Ornn,2
+Ornn,Varus,3
+Galio,Jarvan IV,2
+Jarvan IV,Varus,2
+Galio,Varus,1
+Galio,Tahm Kench,1
+Tahm Kench,Varus,3
+Jarvan IV,Kennen,1
+Kennen,Zoe,1
+Aphelios,Kennen,1
+Kennen,Thresh,1
+Jarvan IV,Zoe,3
+Aphelios,Jarvan IV,2
+Jarvan IV,Thresh,3
+Aphelios,Zoe,3
+Thresh,Zoe,4
+Aphelios,Thresh,4
+Ornn,Sejuani,1
+Kassadin,Ornn,1
+Ornn,Thresh,3
+Kassadin,Sejuani,1
+Sejuani,Varus,1
+Sejuani,Thresh,1
+Kassadin,Varus,1
+Kassadin,Thresh,1
+Thresh,Varus,1
+Aatrox,Trundle,2
+Aatrox,Kassadin,1
+Kassadin,Trundle,3
+Miss Fortune,Trundle,2
+Nautilus,Trundle,4
+Kassadin,Nautilus,1
+Ornn,Zoe,3
+Leona,Ornn,2
+Varus,Zoe,1
+Leona,Zoe,5
+Leona,Varus,1
+Aatrox,Sejuani,3
+Aatrox,Twisted Fate,1
+Aatrox,Aphelios,1
+Aatrox,Leona,1
+Sejuani,Twisted Fate,1
+Aphelios,Sejuani,1
+Leona,Sejuani,1
+Aphelios,Twisted Fate,3
+Leona,Twisted Fate,1
+Aphelios,Leona,3
+Aatrox,Corki,1
+Corki,Sejuani,2
+Miss Fortune,Sejuani,3
+Nautilus,Sejuani,1
+Corki,Miss Fortune,4
+Corki,Nautilus,1
+Renekton,Sejuani,1
+Corki,Renekton,1
+Braum,Renekton,3
+Braum,Sejuani,1
+Braum,Corki,2
+Aatrox,Cassiopeia,1
+Aatrox,Blitzcrank,1
+Cassiopeia,Sejuani,1
+Blitzcrank,Sejuani,1
+Cassiopeia,Miss Fortune,1
+Blitzcrank,Cassiopeia,1
+Ekko,Renekton,1
+Renekton,Talon,1
+Renekton,Xayah,2
+Rakan,Renekton,3
+Ekko,Talon,1
+Ekko,Xayah,1
+Ekko,Rakan,1
+Talon,Xayah,1
+Rakan,Talon,1
+Rakan,Xayah,2
+Lee Sin,Renekton,7
+Renekton,Zoe,2
+Lee Sin,Xayah,1
+Lee Sin,Rakan,3
+Xayah,Zoe,1
+Rakan,Zoe,1
+Aatrox,Jarvan IV,3
+Aatrox,Lissandra,1
+Aatrox,Alistar,1
+Jarvan IV,Lissandra,1
+Alistar,Jarvan IV,1
+Alistar,Lissandra,1
+Alistar,Miss Fortune,1
+Renekton,Varus,2
+Renekton,Tahm Kench,4
+Azir,Gragas,1
+Gragas,Varus,1
+Gragas,Tahm Kench,1
+Azir,Varus,1
+Mordekaiser,Nidalee,1
+Mordekaiser,Sett,1
+Braum,Mordekaiser,1
+Nidalee,Sett,1
+Miss Fortune,Nidalee,1
+Braum,Nidalee,1
+Miss Fortune,Sett,3
+Braum,Sett,1
+Lee Sin,Maokai,1
+Maokai,Syndra,1
+Maokai,Varus,1
+Maokai,Tahm Kench,1
+Lee Sin,Syndra,9
+Lee Sin,Varus,1
+Syndra,Varus,1
+Syndra,Tahm Kench,3
+Jarvan IV,Mordekaiser,2
+Mordekaiser,Syndra,1
+Kalista,Mordekaiser,2
+Jarvan IV,Syndra,6
+Jarvan IV,Kalista,2
+Kalista,Syndra,1
+Leona,Syndra,4
+Kalista,Leona,1
+Renekton,Trundle,3
+LeBlanc,Renekton,5
+LeBlanc,Trundle,2
+Trundle,Varus,1
+LeBlanc,Varus,1
+LeBlanc,Nautilus,3
+Nautilus,Varus,1
+Kassadin,Mordekaiser,1
+Mordekaiser,Taric,1
+Jarvan IV,Taric,1
+Kalista,Kassadin,1
+Kassadin,Taric,1
+Kalista,Taric,3
+Aatrox,Sylas,1
+Aatrox,Thresh,1
+Jarvan IV,Sylas,1
+Miss Fortune,Sylas,1
+Sylas,Thresh,2
+Miss Fortune,Thresh,4
+Akali,Trundle,1
+Akali,Azir,1
+Akali,Kalista,2
+Akali,Taric,2
+Azir,Trundle,2
+Kalista,Trundle,1
+Taric,Trundle,1
+Azir,Kalista,1
+Azir,Taric,1
+Renekton,Sett,1
+Akali,Renekton,1
+Kalista,Renekton,1
+Renekton,Taric,1
+Akali,Sett,1
+Kalista,Sett,1
+Sett,Taric,1
+Ornn,Sett,2
+Corki,Ornn,1
+Corki,Sett,1
+Sett,Thresh,2
+Corki,Thresh,1
+Jarvan IV,Wukong,2
+Wukong,Zoe,2
+Miss Fortune,Wukong,3
+Leona,Wukong,2
+Miss Fortune,Zoe,2
+Sett,Zoe,2
+Gragas,Wukong,1
+Galio,Wukong,2
+Taric,Wukong,1
+Gragas,Miss Fortune,1
+Gragas,Taric,1
+Galio,Miss Fortune,2
+Galio,Taric,1
+Miss Fortune,Taric,1
+Trundle,Wukong,6
+Corki,Wukong,1
+Braum,Wukong,1
+Corki,Trundle,1
+Braum,Trundle,1
+LeBlanc,Lee Sin,2
+Braum,Lee Sin,1
+LeBlanc,Miss Fortune,1
+Braum,LeBlanc,1
+LeBlanc,Wukong,3
+Ezreal,Wukong,4
+Tahm Kench,Wukong,2
+Ezreal,Trundle,3
+Tahm Kench,Trundle,2
+Ezreal,LeBlanc,2
+LeBlanc,Tahm Kench,2
+Ezreal,Tahm Kench,1
+Syndra,Wukong,4
+Rakan,Wukong,2
+Syndra,Trundle,2
+Rakan,Trundle,1
+Ezreal,Syndra,6
+Rakan,Syndra,2
+Ezreal,Rakan,2
+Renekton,Syndra,8
+Miss Fortune,Syndra,2
+Miss Fortune,Rakan,1
+Aatrox,Syndra,2
+Aatrox,Ezreal,2
+Aatrox,Sett,2
+Ezreal,Jarvan IV,4
+Jarvan IV,Sett,1
+Sett,Syndra,1
+Ezreal,Sett,3
+Lee Sin,Wukong,3
+Aphelios,Wukong,6
+Thresh,Wukong,1
+Aphelios,Lee Sin,4
+Lee Sin,Thresh,1
+Aphelios,LeBlanc,3
+LeBlanc,Thresh,1
+Renekton,Thresh,2
+Syndra,Thresh,3
+Kassadin,Renekton,1
+Aphelios,Renekton,3
+Bard,Renekton,3
+Aphelios,Trundle,4
+Bard,Trundle,3
+Aphelios,Kassadin,2
+Bard,Kassadin,1
+Aphelios,Bard,6
+Aatrox,Graves,1
+Aatrox,Zoe,2
+Aatrox,Ashe,2
+Aatrox,Bard,1
+Graves,Zoe,4
+Ashe,Graves,4
+Bard,Graves,6
+Ashe,Zoe,5
+Bard,Zoe,4
+Ashe,Bard,3
+Graves,Wukong,2
+Twisted Fate,Wukong,1
+Bard,Wukong,3
+Graves,Twisted Fate,2
+Aphelios,Graves,3
+Bard,Twisted Fate,1
+Graves,Renekton,2
+Graves,LeBlanc,1
+Bard,LeBlanc,2
+Aatrox,Lee Sin,1
+Ezreal,Lee Sin,4
+Lee Sin,Sett,1
+Ezreal,Zoe,2
+Camille,Trundle,1
+Camille,Twisted Fate,2
+Aphelios,Camille,1
+Camille,Thresh,1
+Trundle,Twisted Fate,1
+Thresh,Trundle,2
+Thresh,Twisted Fate,1
+Kassadin,Wukong,1
+Lulu,Wukong,1
+Lulu,Trundle,1
+Kassadin,Lulu,1
+Aphelios,Lulu,1
+Bard,Jarvan IV,3
+Aphelios,Syndra,5
+Bard,Syndra,4
+Rek'Sai,Sylas,1
+Sylas,Syndra,1
+Aphelios,Sylas,1
+Rek'Sai,Syndra,1
+Aphelios,Rek'Sai,1
+Rek'Sai,Thresh,1
+Ashe,Renekton,3
+Jarvan IV,LeBlanc,1
+Ashe,Jarvan IV,1
+Ashe,LeBlanc,1
+Lee Sin,Ornn,2
+Kai'Sa,Ornn,1
+Nautilus,Ornn,1
+Galio,Lee Sin,1
+Kai'Sa,Lee Sin,1
+Lee Sin,Nautilus,7
+Galio,Kai'Sa,1
+Galio,Nautilus,2
+Kai'Sa,Nautilus,1
+Ashe,Trundle,4
+Ashe,Syndra,4
+Nautilus,Syndra,4
+Ashe,Nautilus,8
+Jax,Trundle,2
+Jax,Zoe,1
+Ashe,Jax,2
+Jax,Thresh,1
+Trundle,Zoe,3
+Ashe,Thresh,1
+Galio,Jax,3
+Bard,Jax,2
+Galio,Trundle,2
+Ashe,Galio,2
+Bard,Galio,4
+Aphelios,Nautilus,2
+Jayce,Trundle,1
+Azir,Jayce,1
+Ezreal,Jayce,2
+Jayce,Leona,1
+Leona,Trundle,1
+Azir,Ezreal,3
+Azir,Leona,2
+Ezreal,Leona,10
+Graves,Jax,1
+Jax,Orianna,3
+Ezreal,Jax,7
+Jax,Leona,6
+Graves,Orianna,3
+Ezreal,Graves,3
+Graves,Leona,6
+Ezreal,Orianna,4
+Leona,Orianna,5
+Kayle,Volibear,1
+Kayle,LeBlanc,1
+Ezreal,Kayle,1
+Kayle,Nautilus,1
+LeBlanc,Volibear,3
+Ezreal,Volibear,1
+Nautilus,Volibear,2
+Ezreal,Nautilus,1
+Orianna,Renekton,3
+Leona,Renekton,2
+Senna,Wukong,1
+Graves,Syndra,1
+Graves,Senna,2
+Graves,Tahm Kench,2
+Senna,Syndra,2
+Ornn,Syndra,1
+Jhin,Renekton,5
+Jhin,Trundle,1
+Jhin,Zoe,6
+Jayce,Lee Sin,3
+Jayce,Syndra,2
+Aphelios,Jayce,2
+Bard,Jayce,2
+Bard,Lee Sin,1
+Jayce,Tahm Kench,2
+Aphelios,Tahm Kench,1
+Graves,Ornn,1
+Ornn,Ryze,1
+Bard,Ornn,2
+Graves,Ryze,1
+Ezreal,Ryze,1
+Bard,Ryze,1
+Bard,Ezreal,4
+Jhin,Mordekaiser,2
+Mordekaiser,Nautilus,1
+Jhin,Lee Sin,2
+Nautilus,Zoe,4
+Jhin,Nautilus,3
+Camille,Graves,1
+Camille,Zoe,1
+Ashe,Camille,2
+Camille,Nautilus,2
+Graves,Nautilus,1
+Camille,Lee Sin,1
+Lee Sin,Twisted Fate,1
+Ashe,Lee Sin,4
+Ashe,Twisted Fate,1
+Nautilus,Twisted Fate,1
+Ashe,Wukong,2
+Nautilus,Wukong,2
+Jax,Sett,1
+Orianna,Sett,2
+Renekton,Volibear,1
+Renekton,Senna,2
+Senna,Volibear,1
+Tahm Kench,Volibear,1
+LeBlanc,Senna,1
+Volibear,Wukong,1
+Aphelios,Volibear,1
+Gangplank,Sett,1
+Gangplank,Orianna,2
+Gangplank,Jhin,4
+Gangplank,Tahm Kench,1
+Jhin,Sett,1
+Sett,Tahm Kench,1
+Jhin,Orianna,3
+Orianna,Tahm Kench,2
+Gangplank,Olaf,3
+Gangplank,Kassadin,1
+Caitlyn,Gangplank,2
+Gangplank,Lux,2
+Kassadin,Olaf,1
+Caitlyn,Olaf,1
+Lux,Olaf,1
+Caitlyn,Kassadin,1
+Kassadin,Lux,1
+Caitlyn,Lux,2
+Gangplank,Volibear,1
+Gangplank,Syndra,1
+Syndra,Volibear,1
+Caitlyn,Volibear,1
+Lux,Volibear,1
+Caitlyn,Syndra,1
+Lux,Syndra,1
+Gangplank,Graves,5
+Gangplank,Zoe,4
+Ashe,Gangplank,2
+Gangplank,Leona,5
+Ashe,Leona,2
+Aphelios,Gangplank,2
+Olaf,Zoe,3
+Aphelios,Olaf,1
+Leona,Olaf,1
+Lee Sin,Orianna,1
+Nautilus,Orianna,2
+Jayce,Zoe,2
+Ashe,Jayce,2
+Jayce,Nautilus,2
+Olaf,Renekton,1
+Olaf,Syndra,1
+Ashe,Olaf,2
+Nautilus,Olaf,3
+Gangplank,Nautilus,1
+Jhin,Olaf,1
+Morgana,Renekton,1
+Jarvan IV,Morgana,1
+Jhin,Syndra,2
+Morgana,Syndra,2
+Jhin,Morgana,2
+Graves,Mordekaiser,1
+Azir,Mordekaiser,1
+Mordekaiser,Morgana,1
+Azir,Graves,1
+Graves,Jhin,3
+Graves,Morgana,1
+Azir,Morgana,1
+Jayce,Olaf,2
+Jayce,Orianna,1
+Olaf,Orianna,1
+Ashe,Orianna,1
+Renekton,Skarner,1
+Orianna,Skarner,1
+Jhin,Skarner,1
+Skarner,Tahm Kench,1
+Morgana,Wukong,1
+Lee Sin,Morgana,1
+Ashe,Morgana,1
+Kayn,Renekton,1
+Kayn,Syndra,1
+Kayn,Senna,1
+Kayn,Thresh,1
+Senna,Thresh,1
+Jarvan IV,Jax,2
+Ezreal,Galio,1
+Ezreal,Olaf,1
+Bard,Olaf,1
+Lillia,Renekton,1
+Lucian,Renekton,1
+Lillia,Lucian,1
+Jhin,Lillia,1
+Braum,Lillia,1
+Jhin,Lucian,1
+Braum,Lucian,1
+Braum,Jhin,1
+Azir,Wukong,2
+Azir,Lee Sin,1
+Azir,Rakan,1
+Kindred,Ornn,1
+Kindred,Zoe,2
+Jhin,Kindred,3
+Bard,Kindred,2
+Bard,Jhin,3
+Jax,Shen,1
+Orianna,Shen,1
+Ezreal,Shen,2
+Leona,Shen,2
+Akali,Jax,2
+Akali,Jarvan IV,1
+Akali,Ezreal,2
+Akali,Leona,2
+Shen,Wukong,1
+Azir,Shen,1
+Fiora,Rengar,1
+Fiora,Syndra,1
+Fiora,Jhin,1
+Fiora,Leona,1
+Rengar,Syndra,1
+Jhin,Rengar,1
+Leona,Rengar,1
+Jhin,Leona,2
+Jax,Nidalee,3
+Alistar,Jax,1
+Akali,Nidalee,1
+Ezreal,Nidalee,2
+Alistar,Nidalee,1
+Akali,Alistar,1
+Alistar,Ezreal,1
+Aphelios,Orianna,1
+Draven,Jax,1
+Galio,Nidalee,1
+Draven,Nidalee,1
+Leona,Nidalee,1
+Jax,Syndra,1
+Nidalee,Syndra,1
+Bard,Nidalee,1
+Graves,Irelia,1
+Galio,Irelia,1
+Irelia,Jhin,1
+Bard,Irelia,1
+Galio,Graves,2
+Galio,Jhin,2
+Graves,Jayce,1
+Jayce,Twisted Fate,1
+Jayce,Senna,1
+Senna,Twisted Fate,1
+Tahm Kench,Twisted Fate,1
+Camille,Jarvan IV,1
+Camille,Syndra,1
+Camille,Ezreal,1
+Bard,Camille,1
+Akali,Gangplank,1
+Akali,Graves,1
+Akali,Ashe,1
+Galio,Gangplank,2
+Gangplank,Miss Fortune,1
+Bard,Gangplank,2
+Graves,Miss Fortune,1
+Bard,Miss Fortune,1
+Gangplank,Kindred,1
+Galio,Kindred,1
+Kindred,Volibear,1
+Volibear,Zoe,1
+Jhin,Volibear,1
+Thresh,Volibear,1
+Kindred,Thresh,1
+Jhin,Thresh,1

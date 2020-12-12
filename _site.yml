@@ -1,11 +1,15 @@
-name: "my-website"
-output_dir:   "docs"
+name: "Kalulu's Nutshell"
+output_dir: "docs"
 navbar:
-  title: "My Website"
+  title: "Kalulu's Nutshell"
   left:
     - text: "Home"
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Check it out"
-      href: 503_proj_leagueoflegendsS10_vis.html
+    - text: "Looking into League of Legends Season 2020"
+      href: anly-503-proj.html
+    - text: "Cancer & Pollution"
+      href: cancer_pollution.html
+
+    
