@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Lujia Deng" />
+
+<meta name="date" content="2020-12-12" />
+
+<title>bank_customer_acct_exp</title>
+
+<script src="site_libs/header-attrs-2.4.6/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Kalulu's Nutshell</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class=" fa_rocket"></span>
+     
+    ANLY-503 Assignments
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="anly-503-a5.html">Explore Bank Accounts</a>
+    </li>
+    <li>
+      <a href="anly-503-a3.html">A Comparison of Three Visualization Designs</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="anly-503-proj.html">
+    <span class=" fa_rocket"></span>
+     
+    Looking into League of Legends Season 2020
+  </a>
+</li>
+<li>
+  <a href="cancer_pollution.html">
+    <span class=" fa_rocket"></span>
+     
+    Cancer &amp; Pollution
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">bank_customer_acct_exp</h1>
+<h4 class="author">Lujia Deng</h4>
+<h4 class="date">12/12/2020</h4>
+
+</div>
+
+
+<pre class="python"><code>import warnings
+warnings.filterwarnings(&#39;ignore&#39;)
+
+import matplotlib
+matplotlib.use(&quot;TkAgg&quot;)
+from matplotlib import pyplot as plt
+import pandas as pd
+import seaborn as sns
+import numpy as np
+
+pd.set_option(&#39;display.max_columns&#39;, None)
+pd.set_option(&#39;display.max_rows&#39;, None)
+pd.set_option(&#39;max_colwidth&#39;, 100)</code></pre>
+<div id="task-1-explore-account-characteristics-1-whether-an-account-has-a-credit-card-or-not-2-whether-an-account-has-a-loan-or-not-3-the-average-balance-for-the-account" class="section level4">
+<h4><strong>Task 1:</strong> Explore account characteristics: 1) Whether an account has a credit card or not? 2) Whether an account has a loan or not? 3) The average balance for the account</h4>
+<pre class="python"><code># import data
+acct = pd.read_csv(&quot;./anly-503-a5/data/accounts_analytical.csv&quot;) 
+txn = pd.read_csv(&quot;./anly-503-a5/data/transactions.csv&quot;)
+
+# calculate the average
+avg_balance = txn.groupby(by=&quot;account_id&quot;)[&#39;account_id&#39;,&#39;balance&#39;].agg(&#39;mean&#39;)
+
+# merge into acct dataset
+acct_vis = acct.merge(avg_balance[&#39;balance&#39;], how=&quot;left&quot;, on=&quot;account_id&quot;)[[&quot;credit_cards&quot;, &quot;loan_date&quot;, &quot;balance&quot;]]
+
+# clean the vis data
+acct_vis[&#39;credit_cards&#39;] = acct_vis[&#39;credit_cards&#39;].apply(lambda x: 0 if pd.isnull(x) else 1)
+acct_vis[&#39;loan_date&#39;] = acct_vis[&#39;loan_date&#39;].apply(lambda x: 0 if pd.isnull(x) else 1)
+
+acct_vis = acct_vis.rename(columns = {&#39;credit_cards&#39;: &#39;has_credit_cards&#39;, &#39;loan_date&#39;:&#39;has_loan&#39;, &#39;balance&#39;:&#39;avg_balance&#39;})
+
+# Create an account type
+acct_vis[&#39;type&#39;] = None
+acct_vis.loc[(acct_vis[&#39;has_credit_cards&#39;] == 0) &amp; (acct_vis[&#39;has_loan&#39;] == 0), &#39;type&#39;] = &#39;no cards, no loan&#39;
+acct_vis.loc[(acct_vis[&#39;has_credit_cards&#39;] == 1) &amp; (acct_vis[&#39;has_loan&#39;] == 0), &#39;type&#39;] = &#39;has cards, no loan&#39;
+acct_vis.loc[(acct_vis[&#39;has_credit_cards&#39;] == 0) &amp; (acct_vis[&#39;has_loan&#39;] == 1), &#39;type&#39;] = &#39;no cards, has loan&#39;
+acct_vis.loc[(acct_vis[&#39;has_credit_cards&#39;] == 1) &amp; (acct_vis[&#39;has_loan&#39;] == 1), &#39;type&#39;] = &#39;has cards, has loan&#39;
+
+acct_vis.head()</code></pre>
+<pre><code>##    has_credit_cards  has_loan   avg_balance                 type
+## 0                 1         0  15994.079498   has cards, no loan
+## 1                 1         1  36540.780335  has cards, has loan
+## 2                 1         0  26973.529915   has cards, no loan
+## 3                 0         0  21753.526882    no cards, no loan
+## 4                 1         0  25090.023810   has cards, no loan</code></pre>
+<pre class="python"><code>sns.set_palette([&quot;#2A9D8F&quot;, &#39;#E9C46A&#39;, &#39;#F4A261&#39;, &#39;#E76F51&#39;, &#39;#264653&#39;])
+plt.figure(figsize=(20, 20))
+g = sns.FacetGrid(acct_vis, col=&quot;has_credit_cards&quot;,  row=&quot;has_loan&quot;, margin_titles=True, despine=False, hue=&quot;type&quot;)
+g.map_dataframe(sns.histplot, x=&quot;avg_balance&quot;);
+g.set_xlabels(&#39;Account Average Balance&#39;);
+g.set_ylabels(&#39;Count&#39;, labelpad=1);
+#g.set_axis_labels(&#39;Account Average Balance&#39;, &quot;Count&quot;);
+g.fig.subplots_adjust(wspace=0, hspace=0)
+plt.show()</code></pre>
+<p><img src="anly-503-a5_files/figure-html/unnamed-chunk-3-1.png" width="576" /></p>
+</div>
+<div id="task-2-what-is-the-distribution-of-all-loans-and-what-are-their-characteristics" class="section level4">
+<h4><strong>Task 2:</strong> What is the distribution of all loans and what are their characteristics?</h4>
+<pre class="python"><code># get loan data
+loan = acct.dropna(subset=[&#39;loan_date&#39;])[[&#39;loan_date&#39;, &#39;loan_amount&#39;, &#39;loan_payment&#39;, &#39;loan_term&#39;, &#39;loan_status&#39;, &#39;loan_default&#39;]]
+
+# correct date data type
+loan[&#39;loan_date&#39;] = [np.datetime64(x) for x in loan[&#39;loan_date&#39;]]
+
+# retrieve the year information
+loan[&#39;loan_year&#39;] = np.array(loan[&#39;loan_date&#39;]).astype(&#39;datetime64[Y]&#39;).astype(int) + 1970 
+
+loan.head()</code></pre>
+<pre><code>##     loan_date  loan_amount  loan_payment  loan_term loan_status loan_default  \
+## 1  1994-01-05      80952.0        3373.0       24.0     expired        False   
+## 17 1996-04-29      30276.0        2523.0       12.0     expired         True   
+## 23 1997-12-08      30276.0        2523.0       12.0     expired        False   
+## 33 1998-10-14     318480.0        5308.0       60.0     current         True   
+## 59 1996-05-02     165960.0        6915.0       24.0     expired        False   
+## 
+##     loan_year  
+## 1        1994  
+## 17       1996  
+## 23       1997  
+## 33       1998  
+## 59       1996</code></pre>
+<pre class="python"><code>
+# distribution
+fig, ax = plt.subplots(2, 2, figsize = (12,12))
+                       
+sns.distplot(loan[&#39;loan_amount&#39;]/3, ax = ax[0,0]);
+ax[0,0].set_title(&#39;Loan Amount Distribution (in thousands $)&#39;)
+ax[0,0].set_ylabel(&quot;Density&quot;)
+
+sns.distplot(loan[&#39;loan_term&#39;], ax = ax[0,1]);
+ax[0,1].set_title(&#39;Loan Term Distribution&#39;)
+ax[0,1].set_ylabel(&quot;Density&quot;)
+
+sns.distplot(loan[&#39;loan_year&#39;], ax = ax[1,0]);
+ax[1,0].set_title(&#39;Loan Distribution over Year&#39;)
+ax[1,0].set_ylabel(&quot;Density&quot;)
+
+# How many loans are current and expired? What proportions of current and expired loans are default?
+default = list(set(loan[&#39;loan_default&#39;].tolist()))
+df_default = loan.groupby([&#39;loan_status&#39;, &#39;loan_default&#39;])[&#39;loan_status&#39;].count().unstack(&#39;loan_default&#39;)
+default_mixture = df_default.plot(kind=&#39;bar&#39;, stacked=True, legend = True, ax = ax[1,1])
+
+plt.show()</code></pre>
+<p><img src="anly-503-a5_files/figure-html/unnamed-chunk-5-1.png" width="1152" /></p>
+<p><strong>Characteristics of the loans:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>The distribution of loan amount is right-skewed, very few loans exceeding 600K dollars</p></li>
+<li><p>Loans are uniformly distributed over loan terms</p></li>
+<li><p>More loans are issued in 1997. Overall, the numebr of loans issued is increasing over time</p></li>
+<li><p>The proportions of loan default in current and expired loans are relatively the same.</p></li>
+</ol>
+</div>
+<div id="task-3-is-there-a-relationship-between-a-good-or-bad-loan-and-the-time-between-an-account-is-opened-an-the-loan-is-created-is-there-a-specific-set-of-accounts-that-seem-to-be-at-higher-or-lower-risk-of-defaulting" class="section level4">
+<h4><strong>Task 3:</strong> Is there a relationship between a good or bad loan and the time between an account is opened an the loan is created? Is there a specific set of accounts that seem to be at higher or lower risk of defaulting?</h4>
+<pre class="python"><code>
+# get accounts with loan
+acct = acct.dropna(subset=[&#39;loan_date&#39;])
+
+# adjust the data type for datetime columns
+acct[&#39;loan_date&#39;] = [np.datetime64(x) for x in acct[&#39;loan_date&#39;]]
+acct[&#39;acct_creation_date&#39;] = [np.datetime64(x) for x in acct[&#39;acct_creation_date&#39;]]
+
+# get the time between account creation and loan issued
+acct[&#39;day_diff&#39;] = acct[&#39;loan_date&#39;] - acct[&#39;acct_creation_date&#39;]
+acct[&#39;day_diff&#39;] = acct[&#39;day_diff&#39;].dt.days</code></pre>
+<div id="is-there-a-relationship-between-a-good-or-bad-loan-and-the-time-between-an-account-is-open-and-the-loan-is-created" class="section level5">
+<h5><strong>1. Is there a relationship between a good or bad loan and the time between an account is open and the loan is created?</strong></h5>
+<pre class="python"><code>
+fig, ax = plt.subplots(1, 1)
+sns.boxplot(x=&quot;loan_default&quot;, y=&quot;day_diff&quot;, data=acct, ax = ax)
+ax.set_title(&#39;Loan Default and Time Difference \n between Account and Loan Creation&#39;)
+ax.set_ylabel(&#39;Time Difference (days)&#39;)
+ax.set_xlabel(&#39;Loan Default&#39;)
+plt.show()</code></pre>
+<p><img src="anly-503-a5_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>We can observe that, accounts with defaulted loans have shorter days between account creation and loan issuance, compared with accounts with good loans. However, the time difference might not be significant, given that there is a great overlap between two boxplots.</p>
+</div>
+<div id="find-a-specific-set-of-accounts-that-seem-to-be-at-higher-risk-of-defaulting" class="section level5">
+<h5><strong>2. Find a specific set of accounts that seem to be at higher risk of defaulting</strong></h5>
+<p><strong>2.1 What are some characteristics of accounts with defaulted loan?</strong></p>
+<p>I am using a scatter matrix plot with possible relevant attributes to explore the characteristics of accounts with loan default:</p>
+<pre class="python"><code>pair_df = acct[[&#39;num_customers&#39;, &#39;loan_amount&#39;, &#39;loan_default&#39;,
+               &#39;max_withdrawal&#39;, &#39;min_withdrawal&#39;, &#39;max_balance&#39;, &#39;min_balance&#39;]]
+
+sns.pairplot(pair_df, hue=&quot;loan_default&quot;);
+
+plt.show()</code></pre>
+<p><img src="anly-503-a5_files/figure-html/unnamed-chunk-8-1.png" width="1533" /></p>
+<p><strong>From the scatter matrix plot above, I have the following observations about loan default:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Default loans are all associated with single-customer accounts</p></li>
+<li><p>They tend to have higher amounts for max_withdrawl (max_withdrawal : loan_amount ratio equals or above 1)</p></li>
+<li><p>They are also more likely to have lower amounts (below 20, close to 0) for min_withdrawal</p></li>
+</ol>
+<p>Therefore, I am going to pull out all the accounts with current loans and have the above characteristics.</p>
+<pre class="python"><code># get all accounts with current loans
+current_loan = acct[acct[&#39;loan_status&#39;] == &#39;current&#39;]
+
+# calculate max_withdrawal/loan_amount ratio
+current_loan[&#39;max_withdrawal_ratio&#39;] = current_loan[&#39;max_withdrawal&#39;]/current_loan[&#39;loan_amount&#39;]
+# Get all current loans with Characteristics 1 and 2
+
+risky = current_loan[current_loan[&#39;num_customers&#39;]==1]
+risky = risky[risky[&#39;max_withdrawal_ratio&#39;] &gt;= 1]
+risky = risky[risky[&#39;min_withdrawal&#39;] &lt;= 20]
+
+risky[[&#39;account_id&#39;, &#39;num_customers&#39;, &#39;loan_status&#39;, &#39;max_withdrawal_ratio&#39;, &#39;min_withdrawal&#39;]]</code></pre>
+<pre><code>##       account_id  num_customers loan_status  max_withdrawal_ratio  \
+## 1701        1906              1     current              1.187934   
+## 2015        2268              1     current              1.237869   
+## 2147        2413              1     current              1.158645   
+## 2673        2986              1     current              1.910294   
+## 2825        3161              1     current              1.865920   
+## 3533        3953              1     current              1.226878   
+## 3835        6061              1     current              7.428127   
+## 3924        7636              1     current              1.422707   
+## 3965        8268              1     current              4.363974   
+## 4013        9140              1     current              1.222555   
+## 4074       10001              1     current              1.170972   
+## 4094       10257              1     current              1.430763   
+## 4126       10711              1     current              1.017370   
+## 4246        7181              1     current              1.181023   
+## 
+##       min_withdrawal  
+## 1701              15  
+## 2015              15  
+## 2147              15  
+## 2673              15  
+## 2825              15  
+## 3533               6  
+## 3835              15  
+## 3924              15  
+## 3965              15  
+## 4013              15  
+## 4074              15  
+## 4094              15  
+## 4126              15  
+## 4246              16</code></pre>
+</div>
+</div>
+<div id="task-4-for-the-account-with-the-highest-number-of-transactions-make-a-time-series-line-plot-for-the-behavior-of-the-account-over-time-including-all-debits-and-credits-the-different-methods-and-the-with-the-different-categories." class="section level4">
+<h4><strong>Task 4:</strong> For the account with the highest number of transactions, make a time series line plot for the behavior of the account over time, including all debits and credits, the different methods, and the with the different categories.</h4>
+<pre class="r"><code>library(tidyverse)
+
+# read in data
+acct = read.csv(&quot;./anly-503-a5/data/accounts_analytical.csv&quot;) 
+txn = read.csv(&quot;./anly-503-a5/data/transactions.csv&quot;)</code></pre>
+<div id="preprocess-the-data" class="section level5">
+<h5><strong>1. Preprocess the Data</strong></h5>
+<p><strong>2.1 Which account has the highest number of transactions?</strong></p>
+<pre class="r"><code># get the account with the highest number of transactions
+
+count_txn &lt;- txn %&gt;% select(account_id, id) %&gt;% group_by(account_id) %&gt;% summarise(count = n_distinct(id)) %&gt;% rename(num_txn = count)
+
+max_num_txn_acct &lt;- count_txn %&gt;% filter(num_txn == max(num_txn)) %&gt;% select(account_id)
+
+print(paste(&quot;The account with the highest number of transactions is&quot;, max_num_txn_acct))</code></pre>
+<pre><code>## [1] &quot;The account with the highest number of transactions is 8261&quot;</code></pre>
+<p><strong>2.2 Get transaction history for this account and prepare the data for plotting</strong></p>
+<pre class="r"><code># get transaction info for this account
+txn_hist &lt;- txn %&gt;% filter(account_id == max_num_txn_acct[[1]])
+
+# correct data type and group dates by year &amp; month
+txn_hist$date &lt;-as.Date(txn_hist$date)
+
+txn_hist$year_month = (format(txn_hist$date,&#39;%Y-%m&#39;))
+txn_hist$year_month = as.Date(paste(txn_hist$year_month,&quot;-01&quot;,sep=&quot;&quot;))
+
+
+# Assign category blank as &#39;others&#39;
+temp_category &lt;- as.character(txn_hist$category) 
+temp_category[temp_category == &quot;&quot;] &lt;- &#39;others&#39;
+txn_hist$category &lt;- as.factor(temp_category)
+
+
+# Assign type blank as &#39;others&#39;
+temp_method &lt;- as.character(txn_hist$method) 
+temp_method[temp_method == &quot;&quot;] &lt;- &#39;others&#39;
+txn_hist$method &lt;- as.factor(temp_method)
+
+
+# create a new df for ploting by year_month
+
+df_year_month &lt;- txn_hist %&gt;% select(type, amount, method, category, year_month) %&gt;% group_by(type, method, category, year_month) %&gt;% summarise(sum(amount)) %&gt;% rename(&#39;amount&#39; = &#39;sum(amount)&#39;)
+
+summary(df_year_month)</code></pre>
+<pre><code>##      type               method                 category     year_month        
+##  credit:141   bank transfer:281   household payment: 63   Min.   :1993-05-01  
+##  debit :340   cash         :132   insurance payment: 63   1st Qu.:1994-10-01  
+##               others       : 68   interest credit  : 68   Median :1996-02-01  
+##                                   loan payment     : 24   Mean   :1996-02-23  
+##                                   others           :200   3rd Qu.:1997-07-01  
+##                                   statement charge : 63   Max.   :1998-12-01  
+##      amount     
+##  Min.   :   15  
+##  1st Qu.:  336  
+##  Median : 1915  
+##  Mean   : 6740  
+##  3rd Qu.: 9000  
+##  Max.   :39507</code></pre>
+</div>
+<div id="make-the-multi-panel-time-series-plot" class="section level5">
+<h5><strong>3. Make the Multi-Panel Time Series Plot</strong></h5>
+<pre class="r"><code># create the plot
+txn_hist_lineplot &lt;- ggplot(df_year_month, aes(x=year_month, y=amount)) + geom_line(aes(color = method, linetype = type), size = 1, alpha = 0.5) + scale_color_manual(values = c(&quot;#00AFBB&quot;, &quot;#E7B800&quot;, &quot;darkgreen&quot;))+ xlab(&quot;&quot;)
+txn_hist_lineplot + facet_wrap(.~category, scales = &quot;free_y&quot;) + 
+  labs(title = &quot;Account 8261: Transaction History&quot;, subtitle = &quot;The plot is splitted into multiple panels based on the payment category.\n Two line types indicate whether the payment is a credit or a debit, \n and three color encodes payment methods.&quot;) + theme_minimal()</code></pre>
+<p><img src="anly-503-a5_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

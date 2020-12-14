@@ -1,0 +1,16 @@
+---
+title: "A Comparison of Three Visualization Designs"
+---
+
+```{r echo=FALSE}
+knitr::include_graphics("./anly-503-a3/pic1.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("./anly-503-a3/pic2.png")
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("./anly-503-a3/pic3.png")
+```
+

@@ -5,11 +5,21 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+    - text: "ANLY-503 Assignments"
+      icon: fa_rocket
+      menu:
+        - text: "Explore Bank Accounts"
+          href: anly-503-a5.html
+        - text: "A Comparison of Three Visualization Designs"
+          href: anly-503-a3.html
     - text: "Looking into League of Legends Season 2020"
+      icon: fa_rocket
       href: anly-503-proj.html
     - text: "Cancer & Pollution"
+      icon: fa_rocket
       href: cancer_pollution.html
-
+output:
+    html_document:
+      theme: cosmo
+      highlight: textmate
     

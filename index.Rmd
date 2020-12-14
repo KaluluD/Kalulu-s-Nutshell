@@ -1,9 +1,14 @@
 ---
-title: "My Website"
+title: "Kalulu's Nutshell"
 ---
 
-Hello, Website!
+Hi. My name is Lujia Deng. Thanks for visiting my website. A few notes to help you navigate:
 
-For more information about simple R Markdown websites, please read the documentation at https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html.
 
-Please also note that simple R Markdown sites are _not_ based on **blogdown**. They are probably good for websites with only a few Rmd documents. For larger-scale and more sophisticated websites (such as blogs), you may want to use **blogdown** instead: https://github.com/rstudio/blogdown.
+* **ANLY-503 Assignments** consists of visualization-related assignments I submitted for the ANLY-503 course
+
+
+* **Looking into League of Legends Season 2020** explores the League of Legends Season 2020 data and compares top leagues and teams
+
+
+* **Cancer & Pollution** is a Tableau visualization project which looks into the relationship between cancer and pollution in the US.
